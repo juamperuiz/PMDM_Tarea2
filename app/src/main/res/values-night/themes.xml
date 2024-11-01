@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PMDM_Tarea2" parent="Theme.Material3.Dark">
+
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- SplashScreen cofiguration-->
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/mario_icon_white</item>
+        <item name="android:windowSplashScreenAnimationDuration">5000</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/colorPrimary</item>
+        <item name="android:windowSplashScreenBackground">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="Theme.PMDM_Tarea2" parent="Base.Theme.PMDM_Tarea2" />
+</resources>

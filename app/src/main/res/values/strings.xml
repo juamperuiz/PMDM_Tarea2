@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">PMDM_Tarea2</string>
+    <string name="lista_de_juegos">Lista de juegos</string>
+    <string name="detalles_del_juego">Detalles del Juego</string>
+
+    <!-- Personajes -->
+    <string name="Name">Nombre</string>
+    <string name="CharacterList">Personajes</string>
+    <string name="Role">Rol</string>
+    <string name="Ally">Aliado</string>
+    <string name="Enemy">Enemigo</string>
+    <string name="Skill">Habilidad</string>
+    <string name="Description">Descripción</string>
+
+    <!-- Mario -->
+    <string name="MarioName">Mario</string>
+    <string name="MarioSkill">Fontanero</string>
+    <string name="MarioDescription">Mario es el protagonista de la serie de videojuegos Mario y la mascota de Nintendo. Fue creado por Shigeru Miyamoto en 1981 e hizo su primera aparición en el videojuego arcade Donkey Kong. Es un fontanero estadounidense de origen italiano que actualmente vive en el Reino Champiñon. Como héroe que es, se encarga de salvar a la gente, especialmenmte a la Princesa Peach, a quien ha salvado muchísimas vecces de las garras del temible Bowser, quien es su archi-enemigo. Es una persona humilde y de buen corazón, que no le importa cuanto tenga que recorrer para salvar a la gente que necesita su ayuda.</string>
+
+    <!-- Luigi -->
+    <string name="LuigiName">Luigi</string>
+    <string name="LuigiSkill">Fontanero</string>
+    <string name="LuigiDescription">Luigi es el hermano menor de Mario en los videojuegos de Nintendo. Primero apareció en el juego de arcade del año 1983, Mario Bros, luego en Super Mario Bros. Como segundo jugador, papel que continuó desempeñando en Super Mario Bros 3 y Super Mario World. El nombre de Luigi fue inspirado por el restaurante de pizzas cerca de la sede de Nintendo of America en Redmond, Washington, que se llamaba &quot;Mario &amp; Luigi's&quot;.</string>
+
+    <!-- Peach -->
+    <string name="PeachName">Peach</string>
+    <string name="PeachSkill">Princesa Reino Champiñón</string>
+    <string name="PeachDescription">La Princesa Peach es la princesa del Reino Champiñón. Apareció por primera vez en Super Mario Bros para NES. Peach fue creada por Shigueru Miyamoto y es la damisela en apuros en la mayoría de los juegos de Mario. Desde su debut en Super Mario Bros, Peach ha aparecido en casi todos los juegos de la franquicia, volviéndose uno de los iconos más conocidos de los videojuegos y el personaje feminino de los videojuegos más conocido del mundo. En los juegos de la saga Super Mario, Peach sólo ha sido jugable en Super Mario Bros 2 y Super Mario 3D World. Sin embargo, ella ha sido jugable en mucho de los spin offs de la franquicia. siendo jugable en todos los juegos de Mario Kart, Mario Party, Mario Tennis, Mario Golf, Mario Strikers y Mario Baseball, entre otros muchos juegos.\n\nPeach vive en su castillo y se encarga de asuntos políticos en el Reino Champiñón. Además, varios Toads como el Maestro Kinopio le ayudan a gestionar el reino. Ella se preocupa mucho por los ciudadanos de su reino, y tal como se vio en Mario &amp; Luigi: viaje al centro de Bowser, convoca asambleas para asegurarse del bienestrar de los habitantes de su reino cada cierto tiempo. A menudo es raptada por Bowser o por sus secuaces. No obstante, siempre acaba siendo rescatada por Mario. Las razones por las que es secuestrada por Bowser es porque él quiere tomar control del Reino Champiñón y porque está enamorado de la princesa. De hecho, Bowser ha intentado casarse con Peach en varias ocasiones. No obstante, los sentimientos de Bowser no son correspondidos por Peach. Sin embargo, pese a siempre ser secuestrada por él, Peach no muestra desprecio por Bowser y no le guarda rencor, tratándole de forma amistosa.</string>
+
+    <!-- Yoshi -->
+    <string name="YoshiName">Yoshi</string>
+    <string name="YoshiSkill">Dinosaurio montura de Mario</string>
+    <string name="YoshiDescription">Yoshi es uno de los personajes principales de la franquicia. Es un amistoso dinosaurio perteneciente a la especie de su mismo nombre que ha ayudado a Mario y Luigi, que suelen utilizarlo como una montura muy útil que les permita superar niveles más fácilmente, en varias aventuras y ha protagonizado otras. Vive en la Isla de Yoshi, una isla tropical cercana al Reino Champiñón, aunque visita el reino con frecuencia. \n\nEn un principio, se tenía pensado hacer que Yoshi apareciera en el primer Super Mario Bros, como una montura para Mario, aunque debido a las limitaciones de la NES, no fue implementado. Dicha idea también se quiso implementar en Super Mario Bros 3, pero de nuevo, las limitaciones de la NES hicieron que Yoshi no pudiese aparecer. Finalmente, Yoshi apareció en el siguiente juego de la saga Super Mario World. Yoshi se volvió sumamente popular entre los fans, apareciendo en numerosos juegos de la época hasta la actualidad.  </string>
+
+    <!-- Toad -->
+    <string name="ToadName">Toad</string>
+    <string name="ToadSkill">Habitante del Reino Champiñón</string>
+    <string name="ToadDescription">Toad es un personaje de la saga de videojuegos de Mario de Nintendo. Es un pequeño humanoide con una cabeza en forma de champiñón. Son personas pacíficas del Reino Champiñón. Al igual que otros personajes de Mario, como Yoshi, tanto la especie como el individuo principal se llaman Toad. Aparecieron por primera vez en Super Mario Bros, donde decían la famosa frase &quot;Gracias Mario / Luigi, pero la princesa está en otro castillo&quot; cada vez que Mario llegaba al final de los primeros siete castillos. En Paper Mario aparece la Villa Toad, capital del Reino Champiñón, donde residen los Toads llamados "gente champiñón". \n\nSu compañera y relación amistosa es Toadette. Toad es un personaje feliz y un poco infantil, es amable y casi nunca se enfada. Siempre ha hallado a Mario en sus rescates de la princesa.</string>
+
+
+</resources>
