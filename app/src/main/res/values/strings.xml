@@ -37,5 +37,9 @@
     <string name="ToadSkill">Habitante del Reino Champiñón</string>
     <string name="ToadDescription">Toad es un personaje de la saga de videojuegos de Mario de Nintendo. Es un pequeño humanoide con una cabeza en forma de champiñón. Son personas pacíficas del Reino Champiñón. Al igual que otros personajes de Mario, como Yoshi, tanto la especie como el individuo principal se llaman Toad. Aparecieron por primera vez en Super Mario Bros, donde decían la famosa frase &quot;Gracias Mario / Luigi, pero la princesa está en otro castillo&quot; cada vez que Mario llegaba al final de los primeros siete castillos. En Paper Mario aparece la Villa Toad, capital del Reino Champiñón, donde residen los Toads llamados "gente champiñón". \n\nSu compañera y relación amistosa es Toadette. Toad es un personaje feliz y un poco infantil, es amable y casi nunca se enfada. Siempre ha hallado a Mario en sus rescates de la princesa.</string>
 
+    <!-- Bowser -->
+    <string name="BowserName">Bowser</string>
+    <string name="BowserSkill">Archienemigo de Mario</string>
+    <string name="BowserDescription">AAA</string>
 
 </resources>
