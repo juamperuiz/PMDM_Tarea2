@@ -45,8 +45,10 @@ public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder
     }
 
     private void itemClicked(GameData currentGame, View view) {
+
         // Llama a la función gameClicked de MainActivity, pasando la vista
         ((MainActivity) context).gameClicked(currentGame, view);
+
     }
 }
 

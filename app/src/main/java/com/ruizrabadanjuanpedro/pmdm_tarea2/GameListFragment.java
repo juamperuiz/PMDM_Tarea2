@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,10 +91,10 @@ public class GameListFragment extends Fragment {
 
         games.add(new GameData(
                 "https://i.imgur.com/O40LxL9.jpeg",
-                "Bowser",
+                getString(R.string.BowserName),
                 getString(R.string.Enemy),
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum enim dui, ac tristique felis commodo ut. Suspendisse ultrices gravida nibh, et molestie metus cursus sed. Maecenas congue mauris vel consequat faucibus. Nam nec nulla et nunc ultricies convallis. Curabitur finibus semper blandit. Nullam leo leo, pulvinar non lacus in, aliquam commodo lectus. Nam sit amet neque risus.",
-                "Nintendo Switch"
+                getString(R.string.BowserDescription),
+                getString(R.string.BowserSkill)
         ));
 
     }

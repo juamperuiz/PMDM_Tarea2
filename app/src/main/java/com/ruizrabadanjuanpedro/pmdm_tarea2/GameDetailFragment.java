@@ -5,10 +5,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.ruizrabadanjuanpedro.pmdm_tarea2.R;
+import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameDetailFragmentBinding;
 
@@ -43,10 +45,12 @@ public class GameDetailFragment extends Fragment {
                     .into(binding.image);
             binding.name.setText(name);
             binding.role.setText(role);
-            binding.description.setText(description);
+            binding.description.setText(Html.fromHtml(description));
             binding.skill.setText(skill);
-
             characterName = name;
+
+            // Mensaje de selección con un componente Toast
+            Toast.makeText(getActivity().getApplicationContext(), getString(R.string.CharacterSelected) + " " + characterName, Toast.LENGTH_SHORT).show();
         }
     }
 

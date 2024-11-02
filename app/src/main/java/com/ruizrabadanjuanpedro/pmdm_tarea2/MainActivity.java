@@ -2,6 +2,7 @@ package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController);
+
+        // Mensaje de bienvenida con componente Toast
+        Toast.makeText(MainActivity.this, getString(R.string.WelcomeToast), Toast.LENGTH_SHORT).show();
 
     }
 
