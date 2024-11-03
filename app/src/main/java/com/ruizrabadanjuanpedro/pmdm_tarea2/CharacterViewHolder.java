@@ -13,13 +13,13 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder {
         this.binding = binding;
     }
 
-    public void bind (CharacterData game){
+    public void bind (CharacterData character){
         Picasso.get()
-                .load(game.getImage())
+                .load(character.getImage())
                 .into(binding.image);
-        binding.name.setText(game.getName());
-        binding.role.setText(game.getRole());
-        binding.skill.setText(game.getSkill());
+        binding.name.setText(character.getName());
+        binding.role.setText(character.getRole());
+        binding.skill.setText(character.getSkill());
         binding.executePendingBindings(); // Asegura que se apliquen los cambios de inmediato
     }
 }
