@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameCardviewBinding;
 import android.view.View;
 
-public class GameRecyclerViewAdapter extends RecyclerView.Adapter<CharacterViewHolder> {
+public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<CharacterViewHolder> {
 
     private final ArrayList<CharacterData> games;
     private final Context context;
 
-    public GameRecyclerViewAdapter (ArrayList<CharacterData> games, Context context){
+    public CharacterRecyclerViewAdapter(ArrayList<CharacterData> games, Context context){
         this.games = games;
         this.context = context;
     }

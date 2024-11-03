@@ -13,9 +13,9 @@
 
     </fragment>
 
-    <!-- Definición del GameDetailFragment -->
+    <!-- Definición del CharacterDetailFragment -->
     <fragment
         android:id="@+id/gameDetailFragment"
-        android:name="com.ruizrabadanjuanpedro.pmdm_tarea2.GameDetailFragment"
+        android:name="com.ruizrabadanjuanpedro.pmdm_tarea2.CharacterDetailFragment"
         android:label="Game Detail Fragment" />
 </navigation>

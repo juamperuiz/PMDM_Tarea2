@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Método para manejar el clic en un juego
     public void gameClicked(CharacterData game, View view) {
-        // Crear un Bundle para pasar los datos al GameDetailFragment
+        // Crear un Bundle para pasar los datos al CharacterDetailFragment
         Bundle bundle = new Bundle();
         bundle.putString("name", game.getName());
         bundle.putString("role", game.getRole());
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("image", game.getImage()); // Pasa la imagen del juego
         bundle.putString("description", game.getDescription()); // Pasa la descripción o más datos que necesites
 
-        // Navegar al GameDetailFragment con el Bundle
+        // Navegar al CharacterDetailFragment con el Bundle
         Navigation.findNavController(view).navigate(R.id.gameDetailFragment, bundle);
     }
     @Override

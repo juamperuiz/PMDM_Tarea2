@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameDetailFragmentBinding;
 
-public class GameDetailFragment extends Fragment {
+public class CharacterDetailFragment extends Fragment {
 
     private GameDetailFragmentBinding binding;
     private String characterName;

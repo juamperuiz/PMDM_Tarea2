@@ -18,7 +18,7 @@ public class CharacterListFragment extends Fragment {
 
     private GameListFragmentBinding binding; // Binding para el layout
     private ArrayList<CharacterData> games; // Lista de juegos
-    private GameRecyclerViewAdapter adapter; // Adaptador del RecyclerView
+    private CharacterRecyclerViewAdapter adapter; // Adaptador del RecyclerView
 
     @Nullable
     @Override
@@ -37,7 +37,7 @@ public class CharacterListFragment extends Fragment {
         loadGames(); // Cargar los juegos (puedes implementar esta función para obtener datos)
 
         // Configurar el RecyclerView
-        adapter = new GameRecyclerViewAdapter(games, getActivity());
+        adapter = new CharacterRecyclerViewAdapter(games, getActivity());
         binding.gamesRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.gamesRecyclerview.setAdapter(adapter);
 
