@@ -14,8 +14,8 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
     private final ArrayList<CharacterData> games;
     private final Context context;
 
-    public CharacterRecyclerViewAdapter(ArrayList<CharacterData> games, Context context){
-        this.games = games;
+    public CharacterRecyclerViewAdapter(ArrayList<CharacterData> characters, Context context){
+        this.games = characters;
         this.context = context;
     }
 
@@ -29,13 +29,13 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
         return new CharacterViewHolder(binding);
     }
 
-//    Método para enlazar datos con ek ViewHolder
+    // Método para enlazar datos con ek ViewHolder
     @Override
     public void onBindViewHolder(@NonNull CharacterViewHolder holder, int position) {
         CharacterData currentCharacter = this.games.get(position);
         holder.bind(currentCharacter);
 
-//        Manejar el evento de clic
+    // Manejar el evento de clic
         holder.itemView.setOnClickListener(view -> itemClicked(currentCharacter, view));
     }
 
