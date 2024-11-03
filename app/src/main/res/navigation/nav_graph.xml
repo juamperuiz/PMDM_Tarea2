@@ -6,7 +6,7 @@
     <!-- Definición del MainFragment -->
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.ruizrabadanjuanpedro.pmdm_tarea2.GameListFragment"
+        android:name="com.ruizrabadanjuanpedro.pmdm_tarea2.CharacterListFragment"
         android:label="Main Fragment" >
 
         <!-- Agrega aquí las acciones y destinos que se pueden realizar desde el MainFragment si es necesario -->

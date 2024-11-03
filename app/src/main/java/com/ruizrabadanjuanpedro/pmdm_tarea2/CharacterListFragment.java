@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameListFragmentBinding;
 import java.util.ArrayList;
 
-public class GameListFragment extends Fragment {
+public class CharacterListFragment extends Fragment {
 
     private GameListFragmentBinding binding; // Binding para el layout
     private ArrayList<CharacterData> games; // Lista de juegos
