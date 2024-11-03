@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Configura el NavController
+        // Crea el nav controller, componente de navegación entre fragments y lo inicializa
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController);
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Método para manejar el clic en un juego
-    public void gameClicked(CharacterData game, View view) {
+    public void characterClicked(CharacterData game, View view) {
         // Crear un Bundle para pasar los datos al CharacterDetailFragment
         Bundle bundle = new Bundle();
         bundle.putString("name", game.getName());

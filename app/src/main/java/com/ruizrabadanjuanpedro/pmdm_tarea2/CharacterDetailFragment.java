@@ -12,18 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.squareup.picasso.Picasso;
-import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameDetailFragmentBinding;
+import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.CharacterDetailFragmentBinding;
 
 public class CharacterDetailFragment extends Fragment {
 
-    private GameDetailFragmentBinding binding;
+    private CharacterDetailFragmentBinding binding;
     private String characterName;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflar el layout para este fragmento
-        binding = GameDetailFragmentBinding.inflate(inflater, container, false);
+        binding = CharacterDetailFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

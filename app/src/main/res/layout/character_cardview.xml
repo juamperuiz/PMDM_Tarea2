@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="game"
+            name="character"
             type="com.ruizrabadanjuanpedro.pmdm_tarea2.CharacterData" />
     </data>
 

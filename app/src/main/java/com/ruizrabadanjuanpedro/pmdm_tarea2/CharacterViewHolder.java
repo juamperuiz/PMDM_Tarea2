@@ -2,13 +2,13 @@ package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
-import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameCardviewBinding;
+import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.CharacterCardviewBinding;
 
 public class CharacterViewHolder extends RecyclerView.ViewHolder {
 
-    private final GameCardviewBinding binding;
+    private final CharacterCardviewBinding binding;
 
-    public CharacterViewHolder(GameCardviewBinding binding) {
+    public CharacterViewHolder(CharacterCardviewBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }

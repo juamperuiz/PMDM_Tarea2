@@ -8,8 +8,6 @@
         android:id="@+id/games_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="50dp"
-        />
+        android:paddingTop="?attr/actionBarSize" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

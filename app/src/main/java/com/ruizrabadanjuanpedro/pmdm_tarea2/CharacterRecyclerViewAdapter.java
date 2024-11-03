@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameCardviewBinding;
+import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.CharacterCardviewBinding;
 import android.view.View;
 
 public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<CharacterViewHolder> {
@@ -23,7 +23,7 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
     @NonNull
     @Override
     public CharacterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        GameCardviewBinding binding = GameCardviewBinding.inflate(
+        CharacterCardviewBinding binding = CharacterCardviewBinding.inflate(
                 LayoutInflater.from(parent.getContext()), parent,false
         );
         return new CharacterViewHolder(binding);
@@ -44,10 +44,10 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
         return characters.size();
     }
 
-    private void itemClicked(CharacterData currentGame, View view) {
+    private void itemClicked(CharacterData currentCharacter, View view) {
 
         // Llama a la función gameClicked de MainActivity, pasando la vista
-        ((MainActivity) context).gameClicked(currentGame, view);
+        ((MainActivity) context).characterClicked(currentCharacter, view);
 
     }
 }
