@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         // Navegar al CharacterDetailFragment con el Bundle
         Navigation.findNavController(view).navigate(R.id.gameDetailFragment, bundle);
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         // Utiliza el método navigateUp del NavController

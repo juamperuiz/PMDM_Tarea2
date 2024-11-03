@@ -32,11 +32,11 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
 //    Método para enlazar datos con ek ViewHolder
     @Override
     public void onBindViewHolder(@NonNull CharacterViewHolder holder, int position) {
-        CharacterData currentGame = this.games.get(position);
-        holder.bind(currentGame);
+        CharacterData currentCharacter = this.games.get(position);
+        holder.bind(currentCharacter);
 
 //        Manejar el evento de clic
-        holder.itemView.setOnClickListener(view -> itemClicked(currentGame, view));
+        holder.itemView.setOnClickListener(view -> itemClicked(currentCharacter, view));
     }
 
     @Override
