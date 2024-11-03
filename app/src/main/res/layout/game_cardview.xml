@@ -4,7 +4,7 @@
     <data>
         <variable
             name="game"
-            type="com.ruizrabadanjuanpedro.pmdm_tarea2.GameData" />
+            type="com.ruizrabadanjuanpedro.pmdm_tarea2.CharacterData" />
     </data>
 
     <androidx.cardview.widget.CardView

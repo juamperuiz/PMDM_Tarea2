@@ -1,6 +1,6 @@
 package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
-public class GameData {
+public class CharacterData {
 
     private final String image;
     private final String name;
@@ -8,7 +8,7 @@ public class GameData {
     private final String description;
     private final String skill;
 
-    public GameData(String image, String name, String role, String description, String skill) {
+    public CharacterData(String image, String name, String role, String description, String skill) {
         this.image = image;
         this.name = name;
         this.role = role;

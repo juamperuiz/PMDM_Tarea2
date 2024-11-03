@@ -11,10 +11,10 @@ import android.view.View;
 
 public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder> {
 
-    private final ArrayList<GameData> games;
+    private final ArrayList<CharacterData> games;
     private final Context context;
 
-    public GameRecyclerViewAdapter (ArrayList<GameData> games, Context context){
+    public GameRecyclerViewAdapter (ArrayList<CharacterData> games, Context context){
         this.games = games;
         this.context = context;
     }
@@ -32,7 +32,7 @@ public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder
 //    Método para enlazar datos con ek ViewHolder
     @Override
     public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
-        GameData currentGame = this.games.get(position);
+        CharacterData currentGame = this.games.get(position);
         holder.bind(currentGame);
 
 //        Manejar el evento de clic
@@ -44,7 +44,7 @@ public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder
         return games.size();
     }
 
-    private void itemClicked(GameData currentGame, View view) {
+    private void itemClicked(CharacterData currentGame, View view) {
 
         // Llama a la función gameClicked de MainActivity, pasando la vista
         ((MainActivity) context).gameClicked(currentGame, view);

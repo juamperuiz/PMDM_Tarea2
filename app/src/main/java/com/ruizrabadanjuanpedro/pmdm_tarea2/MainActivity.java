@@ -2,7 +2,6 @@ package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Método para manejar el clic en un juego
-    public void gameClicked(GameData game, View view) {
+    public void gameClicked(CharacterData game, View view) {
         // Crear un Bundle para pasar los datos al GameDetailFragment
         Bundle bundle = new Bundle();
         bundle.putString("name", game.getName());

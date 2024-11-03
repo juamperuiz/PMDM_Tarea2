@@ -13,7 +13,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
         this.binding = binding;
     }
 
-    public void bind (GameData game){
+    public void bind (CharacterData game){
         Picasso.get()
                 .load(game.getImage())
                 .into(binding.image);
