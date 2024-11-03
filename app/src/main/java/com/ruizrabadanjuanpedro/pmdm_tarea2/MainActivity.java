@@ -11,6 +11,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController);
 
-        // Mensaje de bienvenida con componente Toast
-        Toast.makeText(MainActivity.this, getString(R.string.WelcomeToast), Toast.LENGTH_SHORT).show();
+        // Mensaje de bienvenida con componente Snackbar
+        Snackbar.make(findViewById(R.id.constraint_layout), getString(R.string.WelcomeToast), Snackbar.LENGTH_SHORT).show();
 
     }
 
