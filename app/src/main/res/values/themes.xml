@@ -6,7 +6,7 @@
         <item name="fontFamily">@font/dm_sans</item>
 
         <!-- Splash screen -->
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/mario_icon_white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/mario_launcher</item>
         <item name="android:windowSplashScreenAnimationDuration">5000</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@color/colorPrimary</item>
         <item name="android:windowSplashScreenBackground">@color/colorPrimary</item>
