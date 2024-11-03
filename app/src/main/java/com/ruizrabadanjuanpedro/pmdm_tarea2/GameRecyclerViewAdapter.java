@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameCardviewBinding;
 import android.view.View;
 
-public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder> {
+public class GameRecyclerViewAdapter extends RecyclerView.Adapter<CharacterViewHolder> {
 
     private final ArrayList<CharacterData> games;
     private final Context context;
@@ -22,16 +22,16 @@ public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder
     // Método que crea el ViewHolder
     @NonNull
     @Override
-    public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CharacterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         GameCardviewBinding binding = GameCardviewBinding.inflate(
                 LayoutInflater.from(parent.getContext()), parent,false
         );
-        return new GameViewHolder(binding);
+        return new CharacterViewHolder(binding);
     }
 
 //    Método para enlazar datos con ek ViewHolder
     @Override
-    public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CharacterViewHolder holder, int position) {
         CharacterData currentGame = this.games.get(position);
         holder.bind(currentGame);
 

@@ -4,11 +4,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.GameCardviewBinding;
 
-public class GameViewHolder extends RecyclerView.ViewHolder {
+public class CharacterViewHolder extends RecyclerView.ViewHolder {
 
     private final GameCardviewBinding binding;
 
-    public GameViewHolder(GameCardviewBinding binding) {
+    public CharacterViewHolder(GameCardviewBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
