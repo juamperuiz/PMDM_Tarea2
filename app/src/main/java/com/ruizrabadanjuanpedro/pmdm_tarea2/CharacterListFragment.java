@@ -14,12 +14,27 @@ import android.view.ViewGroup;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.CharacterListFragmentBinding;
 import java.util.ArrayList;
 
+/**
+ * Clase que representa el Fragmento que muestra la lista de juegos
+ */
 public class CharacterListFragment extends Fragment {
 
     private CharacterListFragmentBinding binding; // Binding para el layout
     private ArrayList<CharacterData> characters; // Lista de juegos
     private CharacterRecyclerViewAdapter adapter; // Adaptador del RecyclerView
 
+    /**
+     * Método que se llama cuando se crea el fragmento
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -29,6 +44,12 @@ public class CharacterListFragment extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     *
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -42,13 +63,15 @@ public class CharacterListFragment extends Fragment {
         binding.gamesRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.gamesRecyclerview.setAdapter(adapter);
 
-
     }
 
-    // Método para cargar juegos (puedes implementar tu lógica aquí)
+    /**
+     * Método que carga la lista de personajes en un Array
+     */
     private void loadCharacters() {
+
         characters = new ArrayList<CharacterData>();
-        // Llenar la lista con datos de videojuegos
+
         characters.add(new CharacterData(
                 "https://i.imgur.com/NYxHRnf.jpeg",
                 getString(R.string.MarioName),
@@ -99,6 +122,9 @@ public class CharacterListFragment extends Fragment {
 
     }
 
+    /**
+     * Método que cuando es ejecutado el fragmento del listado de personajes se cambia el título del ActionBar
+     */
     @Override
     public void onStart() {
         super.onStart();

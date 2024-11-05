@@ -19,6 +19,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.snackbar.Snackbar;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.ActivityMainBinding;
 
+/**
+ * Clase que representa la Actividad principal
+ */
 public class MainActivity extends AppCompatActivity {
 
     private NavController navController;
@@ -26,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private Dialog dialog;
     private Button botonCerrar;
 
+    /**
+     * Método que se llama cuando se crea la actividad
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Método para manejar el clic en un juego
+    /**
+     * Método para manejar el clic en un personaje
+     * @param game
+     * @param view
+     */
     public void characterClicked(CharacterData game, View view) {
         // Crear un Bundle para pasar los datos al CharacterDetailFragment
         Bundle bundle = new Bundle();
@@ -59,13 +70,21 @@ public class MainActivity extends AppCompatActivity {
         Navigation.findNavController(view).navigate(R.id.gameDetailFragment, bundle);
     }
 
+    /**
+     * Método para manejar el clic en el botón de retroceso
+     * @return
+     */
     @Override
     public boolean onSupportNavigateUp() {
         // Utiliza el método navigateUp del NavController
         return navController.navigateUp() || super.onSupportNavigateUp();
     }
 
-    // Inflar el menú contextual
+    /**
+     * Método para crear el menú
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -73,7 +92,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // Acciones de clic en el menú
+    /**
+     * Método para manejar la selección de un elemento del menú
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -89,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Método para abrir el diálogo de información
+     */
     public void openAboutDialog() {
 
         dialog = new Dialog(MainActivity.this, R.style.Base_Theme_PMDM_Tarea2);
