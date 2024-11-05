@@ -1,7 +1,13 @@
 package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +22,9 @@ import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private NavController navController;
+    private Menu menu;
+    private Dialog dialog;
+    private Button botonCerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,48 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         // Utiliza el método navigateUp del NavController
         return navController.navigateUp() || super.onSupportNavigateUp();
+    }
+
+    // Inflar el menú contextual
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    // Acciones de clic en el menú
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        System.out.println(item.getItemId());
+
+        if (item.getItemId() == R.id.menu_about) {
+            openAboutDialog();
+        } else if (item.getItemId() == 16908332) {
+            return navController.navigateUp() || super.onSupportNavigateUp();
+        }
+
+        return true;
+
+    }
+
+    public void openAboutDialog() {
+
+        dialog = new Dialog(MainActivity.this, R.style.Base_Theme_PMDM_Tarea2);
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.custom_dialog, findViewById(R.id.custom_dialog));
+
+        dialog.setContentView(dialogView);
+        dialog.show();
+
+        botonCerrar = dialogView.findViewById(R.id.dialogButton);
+        botonCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
     }
 
 }

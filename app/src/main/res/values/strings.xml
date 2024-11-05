@@ -5,6 +5,12 @@
     <string name="detalles_del_juego">Detalles del Juego</string>
     <string name="WelcomeToast">Bienvenidos al mundo de Mario</string>
     <string name="CharacterSelected">Se ha seleccionado el personaje</string>
+    <string name="Close">Cerrar</string>
+
+    <!-- Menús -->
+    <string name="about">Sobre la App</string>
+    <string name="preferences">Preferencias</string>
+    <string name="DialogText">Aplicación desarrollada por\nJuan Pedro Ruiz Rabadán\n\nVersión 1.0</string>
 
     <!-- Personajes -->
     <string name="Name">Nombre</string>

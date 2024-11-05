@@ -34,4 +34,13 @@
         <item name="android:justificationMode">inter_word</item>
     </style>
 
+    <style name="textAbout" parent="Base.Theme.PMDM_Tarea2">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="buttonPrimary">
+        <item name="background">@color/buttonPrimary</item>
+        <item name="color">#ffffff</item>
+    </style>
+
 </resources>
