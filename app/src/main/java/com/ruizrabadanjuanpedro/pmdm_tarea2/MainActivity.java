@@ -11,8 +11,11 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -35,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Splashscreen
+        SplashScreen.installSplashScreen(this);
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
@@ -42,13 +49,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Configura el NavController
-        // Crea el nav controller, componente de navegación entre fragments y lo inicializa
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.nav_host_fragment);
+        navController = navHostFragment.getNavController();
 
         // Mensaje de bienvenida con componente Snackbar
         Snackbar.make(findViewById(R.id.constraint_layout), getString(R.string.WelcomeToast), Snackbar.LENGTH_SHORT).show();
+
+        // Toolbar ejecutada mediante viewBinding
+        // TODO: añadir el navcontroller con la flechita hacia atrás
+        setSupportActionBar(binding.toolbar);
 
     }
 
