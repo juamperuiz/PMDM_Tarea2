@@ -8,108 +8,173 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.ActivityMainBinding;
 
 /**
- * Clase que representa la Actividad principal
+ * Clase que representa la Actividad principal de la aplicación
+ * @author Juampe Ruiz
  */
 public class MainActivity extends AppCompatActivity {
 
+    private ActionBarDrawerToggle toggle;
+    private ActivityMainBinding binding;
     private NavController navController;
-    private Menu menu;
     private Dialog dialog;
-    private Button botonCerrar;
 
     /**
-     * Método que se llama cuando se crea la actividad
+     * Método ejecutado automáticamente en el inicio de la actividad
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // Splashscreen
+        // Inicializamos la Splash Screen de bienvenida de la aplicación
         SplashScreen.installSplashScreen(this);
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Configura el NavController
+        // Configuramos el NavController
         FragmentManager fragmentManager = getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
 
-        // Mensaje de bienvenida con componente Snackbar
-        Snackbar.make(findViewById(R.id.constraint_layout), getString(R.string.WelcomeToast), Snackbar.LENGTH_SHORT).show();
+        navController.addOnDestinationChangedListener(this::onChangeView);
 
-        // Toolbar ejecutada mediante viewBinding
-        // TODO: añadir el navcontroller con la flechita hacia atrás
-        setSupportActionBar(binding.toolbar);
+        // Configurar menú toggle
+        configureToggleMenu();
+
+        // Configurar la navegación
+        configureNavigation();
+
+        // Configurar el icono del menú en la ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Mensaje de bienvenida tras la splahscreen mediante el componente Snackbar
+        Snackbar.make(findViewById(R.id.drawer_layout), getString(R.string.WelcomeToast), Snackbar.LENGTH_SHORT).show();
+
+    }
+
+    private void onChangeView(NavController navController, NavDestination navDestination, Bundle bundle) {
+
+        if (toggle == null) { return; }
+
+        if (navDestination.getId() == R.id.gameDetailFragment) {
+            toggle.setDrawerIndicatorEnabled(false);
+        } else {
+            toggle.setDrawerIndicatorEnabled(true);
+        }
+    }
+
+    /**
+     *
+     */
+    private void configureToggleMenu() {
+
+        // Configuramos el ActionBarDrawerToggle
+        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open_drawer, R.string.close_drawer);
+        binding.drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
     }
 
     /**
-     * Método para manejar el clic en un personaje
-     * @param game
+     *
+     */
+    private void configureNavigation() {
+
+        NavigationUI.setupWithNavController(binding.navView, navController);
+
+        // Manejar la selección de elementos del menú
+        binding.navView.setNavigationItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.nav_host_fragment) {
+                navController.navigate(R.id.nav_host_fragment); // Navegar al fragmento de inicio
+            }
+
+            if (menuItem.getItemId() == R.id.menu_about) {
+                openAboutDialog();
+            }
+            binding.drawerLayout.closeDrawers(); // Cerrar el menú
+            return true;
+        });
+
+        // Maneja la opción de perfil del header del menú
+        //ImageView profileImageView = binding.navView.getHeaderView(0).findViewById(R.id.header_image);
+
+//        profileImageView.setOnClickListener(v -> {
+//            navController.navigate(R.id.profileFragment); // Navegar al fragmento de perfil
+//            binding.drawerLayout.closeDrawers(); // Cerrar el menú
+//        });
+
+    }
+
+    /**
+     * Método que maneja el clic en un elemento del listado de personajes
+     * @param character Personaje sobre el que se hace clic
      * @param view
      */
-    public void characterClicked(CharacterData game, View view) {
-        // Crear un Bundle para pasar los datos al CharacterDetailFragment
+    public void characterClicked(CharacterData character, View view) {
+
+        // Crear un Bundle para pasar los datos al fragmento CharacterDetailFragment
         Bundle bundle = new Bundle();
-        bundle.putString("name", game.getName());
-        bundle.putString("role", game.getRole());
-        bundle.putString("skill", game.getSkill());
-        bundle.putString("image", game.getImage()); // Pasa la imagen del juego
-        bundle.putString("description", game.getDescription()); // Pasa la descripción o más datos que necesites
+        bundle.putString("name", character.getName());
+        bundle.putString("role", character.getRole());
+        bundle.putString("skill", character.getSkill());
+        bundle.putString("image", character.getImage());
+        bundle.putString("description", character.getDescription());
 
         // Navegar al CharacterDetailFragment con el Bundle
-        Navigation.findNavController(view).navigate(R.id.gameDetailFragment, bundle);
-    }
-
-    /**
-     * Método para manejar el clic en el botón de retroceso
-     * @return
-     */
-    @Override
-    public boolean onSupportNavigateUp() {
-        // Utiliza el método navigateUp del NavController
-        return navController.navigateUp() || super.onSupportNavigateUp();
+        navController.navigate(R.id.gameDetailFragment, bundle);
+        //Navigation.findNavController(view).navigate(R.id.gameDetailFragment, bundle);
     }
 
     /**
      * Método para crear el menú
      * @param menu
-     * @return
      */
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+    */
 
     /**
      * Método para manejar la selección de un elemento del menú
-     * @param item
-     * @return
+     * @param item Elemento sobre el que se ha hecho clic
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        // Manejar clics en el icono del menú
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
+        /*
         System.out.println(item.getItemId());
 
         if (item.getItemId() == R.id.menu_about) {
@@ -119,11 +184,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+        */
 
     }
 
     /**
-     * Método para abrir el diálogo de información
+     * Método para abrir el menú de Acerca de.
+     * Abre un diálogo con la información de la aplicación.
      */
     public void openAboutDialog() {
 
@@ -133,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(dialogView);
         dialog.show();
 
-        botonCerrar = dialogView.findViewById(R.id.dialogButton);
+        Button botonCerrar = dialogView.findViewById(R.id.dialogButton);
         botonCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,6 +208,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public boolean onSupportNavigateUp() {
+        Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+
+        if (navHostFragment != null) {
+            NavController navController = NavHostFragment.findNavController(navHostFragment);
+            return NavigationUI.navigateUp(navController, binding.drawerLayout) || super.onSupportNavigateUp();
+        }
+        return super.onSupportNavigateUp();
     }
 
 }

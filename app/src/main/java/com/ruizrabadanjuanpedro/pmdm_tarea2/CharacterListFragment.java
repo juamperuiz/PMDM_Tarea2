@@ -6,21 +6,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.CharacterListFragmentBinding;
 import java.util.ArrayList;
 
 /**
- * Clase que representa el Fragmento que muestra la lista de juegos
+ * Clase que representa el Fragmento que muestra la lista de personajes
+ * @author Juampe Ruiz
  */
 public class CharacterListFragment extends Fragment {
 
     private CharacterListFragmentBinding binding; // Binding para el layout
-    private ArrayList<CharacterData> characters; // Lista de juegos
+    private ArrayList<CharacterData> characters; // Lista de personajes
     private CharacterRecyclerViewAdapter adapter; // Adaptador del RecyclerView
 
     /**
@@ -60,13 +59,16 @@ public class CharacterListFragment extends Fragment {
         // Configurar el RecyclerView. Creamos y establecemos el Adapter que transmitirá la información
         // entre la clase y la vista
         adapter = new CharacterRecyclerViewAdapter(characters, getActivity());
-        binding.gamesRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.gamesRecyclerview.setAdapter(adapter);
+        binding.charactersRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.charactersRecyclerview.setAdapter(adapter);
 
     }
 
     /**
      * Método que carga la lista de personajes en un Array
+     * Compone un Array con los personajes que serán mostrados en el fragmento principal
+     * Las imágenes son cargadas desde un repositorio remoto
+     * Los textos están parametrizados en XML con sus respectivas traducciones
      */
     private void loadCharacters() {
 
@@ -128,7 +130,6 @@ public class CharacterListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        // Cambia el título del ActionBar
         if (getActivity() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.CharacterList);
         }

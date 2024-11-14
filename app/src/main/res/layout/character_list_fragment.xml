@@ -5,10 +5,10 @@
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/games_recyclerview"
+        android:id="@+id/characters_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
-        android:paddingTop="15dp" />
+        android:paddingTop="100dp"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

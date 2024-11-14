@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.CharacterDetailFragmentB
 
 /**
  * Clase que representa el Fragmento que muestra los detalles de un personaje
+ * @author Juampe Ruiz
  */
 public class CharacterDetailFragment extends Fragment {
 
@@ -23,7 +23,7 @@ public class CharacterDetailFragment extends Fragment {
     private String characterName;
 
     /**
-     * Método que se llama cuando se crea el fragmento
+     * Método constructor que se llama cuando se crea el fragmento
      * @param inflater The LayoutInflater object that can be used to inflate
      * any views in the fragment,
      * @param container If non-null, this is the parent view that the fragment's
@@ -37,12 +37,13 @@ public class CharacterDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflar el layout para este fragmento
+        // Infla el layout para este fragmento
         binding = CharacterDetailFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
     /**
+     * Método ejecutado automáticamente en la creación de la vista
      * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
      * @param savedInstanceState If non-null, this fragment is being re-constructed
      * from a previous saved state as given here.
@@ -51,7 +52,7 @@ public class CharacterDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Obtener datos del argumento que inicia este fragmento
+        // Obtiene los datos
         if (getArguments() != null) {
             String image = getArguments().getString("image");
             String name = getArguments().getString("name");
@@ -59,7 +60,7 @@ public class CharacterDetailFragment extends Fragment {
             String description = getArguments().getString("description");
             String skill = getArguments().getString("skill");
 
-            // Asignar los datos a los componentes
+            // Asignamos los datos del personaje seleccionado mediante binding para ser mostrados en la vista
             Picasso.get()
                     .load(image)
                     .into(binding.image);
@@ -69,7 +70,7 @@ public class CharacterDetailFragment extends Fragment {
             binding.skill.setText(skill);
             characterName = name;
 
-            // Mensaje de selección con un componente Toast
+            // Mediante un componente Toast, mostramos el nombre del personaje seleccionado al usuario
             Toast.makeText(getActivity().getApplicationContext(), getString(R.string.CharacterSelected) + " " + characterName, Toast.LENGTH_SHORT).show();
         }
     }
@@ -80,7 +81,6 @@ public class CharacterDetailFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        // Cambia el título del ActionBar
         if (getActivity() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(characterName);
         }

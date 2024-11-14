@@ -11,6 +11,7 @@ import android.view.View;
 
 /**
  * Clase que representa el Adaptador del RecyclerView
+ * @author Juampe Ruiz
  */
 public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<CharacterViewHolder> {
 
@@ -73,10 +74,7 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
      * @param view
      */
     private void itemClicked(CharacterData currentCharacter, View view) {
-
-        // Llama a la función gameClicked de MainActivity, pasando la vista
         ((MainActivity) context).characterClicked(currentCharacter, view);
-
     }
 }
 

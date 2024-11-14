@@ -4,6 +4,9 @@
     <string name="WelcomeToast">Welcome to Mario World</string>
     <string name="CharacterSelected">Selected character</string>
     <string name="Close">Close</string>
+    <string name="open_drawer">Open menu</string>
+    <string name="close_drawer">Close menú</string>
+    <string name="home">Home</string>
     <string name="about">About app</string>
     <string name="preferences">Preferences</string>
     <string name="DialogText">App developer\nJuan Pedro Ruiz Rabadán\n\n1.0 version</string>

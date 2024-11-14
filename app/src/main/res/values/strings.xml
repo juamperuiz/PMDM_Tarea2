@@ -5,8 +5,12 @@
     <string name="CharacterSelected">Se ha seleccionado el personaje</string>
     <string name="Close">Cerrar</string>
 
+    <string name="open_drawer">Abrir menú</string>
+    <string name="close_drawer">Cerrar menú</string>
+
     <!-- Menús -->
-    <string name="about">Sobre la App</string>
+    <string name="home">Inicio</string>
+    <string name="about">Acerca de ...</string>
     <string name="preferences">Preferencias</string>
     <string name="DialogText">Aplicación desarrollada por\nJuan Pedro Ruiz Rabadán\n\nVersión 1.0</string>
 

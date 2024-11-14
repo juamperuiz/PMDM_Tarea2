@@ -2,11 +2,7 @@ package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
 /**
  * Clase que contiene los datos de un personaje
- * @param String image Ruta de la imagen del personaje
- * @param String name Nombre del personaje
- * @param String role Rol del personaje
- * @param String description Descripción del personaje
- * @param String skill Habilidad del personaje
+ * @author Juampe Ruiz
  */
 public class CharacterData {
 
@@ -18,11 +14,11 @@ public class CharacterData {
 
     /**
      * Método para inicializar un personaje y sus datos
-     * @param String image Ruta de la imagen del personaje
-     * @param String name Nombre del personaje
-     * @param String role Rol del personaje
-     * @param String description Descripción del personaje
-     * @param String skill Habilidad del personaje
+     * @param image image Ruta en el repositorio externo de la imagen del personaje
+     * @param name Nombre del personaje
+     * @param role Rol del personaje
+     * @param description Descripción del personaje
+     * @param skill Habilidad del personaje
      */
     public CharacterData(String image, String name, String role, String description, String skill) {
         this.image = image;

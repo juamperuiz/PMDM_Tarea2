@@ -6,6 +6,7 @@ import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.CharacterCardviewBinding
 
 /**
  * Clase que representa el ViewHolder del RecyclerView
+ * @author Juampe Ruiz
  */
 public class CharacterViewHolder extends RecyclerView.ViewHolder {
 
@@ -25,13 +26,20 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder {
      * @param character
      */
     public void bind (CharacterData character){
+
+        // Utilizamos la librería Picasso para traer las imágenes desde un repositorio remoto
         Picasso.get()
                 .load(character.getImage())
                 .into(binding.image);
+
+        // Hacemos el binding de los datos recibidos para enviarlos a la vista
         binding.name.setText(character.getName());
         binding.role.setText(character.getRole());
         binding.skill.setText(character.getSkill());
-        binding.executePendingBindings(); // Asegura que se apliquen los cambios de inmediato
+
+        // Asegura que se apliquen los cambios de inmediato
+        binding.executePendingBindings();
+
     }
 }
 
