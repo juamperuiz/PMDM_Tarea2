@@ -10,7 +10,7 @@
         android:title="@string/about" />
 
     <item
-        android:id="@+id/menu_preference"
-        android:title="@string/preferences" />
+        android:id="@+id/menu_language"
+        android:title="@string/changeLang" />
 
 </menu>

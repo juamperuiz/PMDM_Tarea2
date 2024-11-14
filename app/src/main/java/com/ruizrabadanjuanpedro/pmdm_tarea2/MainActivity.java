@@ -1,15 +1,12 @@
 package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
 import android.app.Dialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,12 +15,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.ActivityMainBinding;
+
 
 /**
  * Clase que representa la Actividad principal de la aplicación
@@ -56,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
-
         navController.addOnDestinationChangedListener(this::onChangeView);
 
         // Configurar menú toggle
@@ -114,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
             if (menuItem.getItemId() == R.id.menu_about) {
                 openAboutDialog();
             }
+
+            if (menuItem.getItemId() == R.id.menu_language) {
+                changeLanguage();
+            }
+
             binding.drawerLayout.closeDrawers(); // Cerrar el menú
             return true;
         });
@@ -125,6 +126,26 @@ public class MainActivity extends AppCompatActivity {
 //            navController.navigate(R.id.profileFragment); // Navegar al fragmento de perfil
 //            binding.drawerLayout.closeDrawers(); // Cerrar el menú
 //        });
+
+    }
+
+
+    // Posible solución: https://github.com/YarikSOffice/lingver
+    // Aquí un texto amplio: https://proandroiddev.com/change-language-programmatically-at-runtime-on-android-5e6bc15c758
+    private void changeLanguage() {
+
+        String DeviceLang = Resources.getSystem().getConfiguration().locale.getLanguage();
+
+        switch (DeviceLang) {
+
+            case "es":
+
+                Snackbar.make(findViewById(R.id.drawer_layout), "Idioma Español establecido", Snackbar.LENGTH_SHORT).show();
+                break;
+
+        }
+
+
 
     }
 
