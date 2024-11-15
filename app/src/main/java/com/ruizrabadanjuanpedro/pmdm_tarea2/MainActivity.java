@@ -1,8 +1,12 @@
 package com.ruizrabadanjuanpedro.pmdm_tarea2;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +25,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.snackbar.Snackbar;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.ActivityMainBinding;
 
+import java.util.Locale;
 
 /**
  * Clase que representa la Actividad principal de la aplicación
@@ -64,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
         // Configurar el icono del menú en la ActionBar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Idioma por defecto
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String idiomaSeleccionado = sharedPreferences.getString("idioma", "");
+        if (idiomaSeleccionado.isEmpty()) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("idioma", "es");
+            editor.apply();
         }
 
         // Mensaje de bienvenida tras la splahscreen mediante el componente Snackbar
@@ -119,33 +133,42 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        // Maneja la opción de perfil del header del menú
-        //ImageView profileImageView = binding.navView.getHeaderView(0).findViewById(R.id.header_image);
-
-//        profileImageView.setOnClickListener(v -> {
-//            navController.navigate(R.id.profileFragment); // Navegar al fragmento de perfil
-//            binding.drawerLayout.closeDrawers(); // Cerrar el menú
-//        });
-
     }
 
-
-    // Posible solución: https://github.com/YarikSOffice/lingver
-    // Aquí un texto amplio: https://proandroiddev.com/change-language-programmatically-at-runtime-on-android-5e6bc15c758
     private void changeLanguage() {
 
-        String DeviceLang = Resources.getSystem().getConfiguration().locale.getLanguage();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String idiomaSeleccionado = sharedPreferences.getString("idioma", "");
+        if (idiomaSeleccionado.isEmpty()) { idiomaSeleccionado = "en"; }
 
-        switch (DeviceLang) {
+        switch (idiomaSeleccionado) {
 
             case "es":
-
-                Snackbar.make(findViewById(R.id.drawer_layout), "Idioma Español establecido", Snackbar.LENGTH_SHORT).show();
+                setLanguage("en");
+                break;
+            case "en":
+                setLanguage("es");
                 break;
 
         }
 
+    }
 
+    private void setLanguage(String lang) {
+
+        // Establecemos como preferencia en el dispositivo la selección del usuario
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("idioma", lang);
+        editor.apply();
+
+        Resources res = getResources();
+        Configuration conf = res.getConfiguration();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        conf.locale = Locale.forLanguageTag(lang);
+        res.updateConfiguration(conf, dm);
+        recreate();
 
     }
 
@@ -168,19 +191,6 @@ public class MainActivity extends AppCompatActivity {
         navController.navigate(R.id.gameDetailFragment, bundle);
         //Navigation.findNavController(view).navigate(R.id.gameDetailFragment, bundle);
     }
-
-    /**
-     * Método para crear el menú
-     * @param menu
-     */
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-    */
 
     /**
      * Método para manejar la selección de un elemento del menú

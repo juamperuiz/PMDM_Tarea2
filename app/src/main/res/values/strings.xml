@@ -12,6 +12,7 @@
     <string name="home">Inicio</string>
     <string name="about">Acerca de ...</string>
     <string name="changeLang">English</string>
+    <string name="changedLang">Language: English</string>
     <string name="DialogText">Aplicación desarrollada por\nJuan Pedro Ruiz Rabadán\n\nVersión 1.0</string>
 
     <!-- Personajes -->
