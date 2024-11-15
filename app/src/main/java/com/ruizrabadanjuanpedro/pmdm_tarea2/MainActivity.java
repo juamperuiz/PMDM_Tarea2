@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
+        // Inflamos el layout
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -60,18 +61,16 @@ public class MainActivity extends AppCompatActivity {
         navController = navHostFragment.getNavController();
         navController.addOnDestinationChangedListener(this::onChangeView);
 
-        // Configurar menú toggle
+        // Configuramos menú toggle
         configureToggleMenu();
 
-        // Configurar la navegación
+        // Configuramos la navegación
         configureNavigation();
 
-        // Configurar el icono del menú en la ActionBar
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        // Configuramos el icono del menú en la ActionBar
+        if (getSupportActionBar() != null) { getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
 
-        // Idioma por defecto
+        // Establecemos un idioma por defecto en las SharedPreferences si no existe almacenado uno previo
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String idiomaSeleccionado = sharedPreferences.getString("idioma", "");
         if (idiomaSeleccionado.isEmpty()) {
@@ -80,11 +79,17 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
 
-        // Mensaje de bienvenida tras la splahscreen mediante el componente Snackbar
+        // Mensaje de bienvenida tras la SplashScreen mediante el componente Snackbar
         Snackbar.make(findViewById(R.id.drawer_layout), getString(R.string.WelcomeToast), Snackbar.LENGTH_SHORT).show();
 
     }
 
+    /**
+     * Método ejecutado cuando cambiamos la vista con la navegación de la app
+     * @param navController Componente navController
+     * @param navDestination Destino de la navegación
+     * @param bundle
+     */
     private void onChangeView(NavController navController, NavDestination navDestination, Bundle bundle) {
 
         if (toggle == null) { return; }
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Método para configurar apertura y cierre del menú drawer
      */
     private void configureToggleMenu() {
 
@@ -109,37 +114,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Método para la configuración de la navegación del NavController
      */
     private void configureNavigation() {
 
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        // Manejar la selección de elementos del menú
+        // Manejamos la selección de elementos del menú
         binding.navView.setNavigationItemSelectedListener(menuItem -> {
-            if (menuItem.getItemId() == R.id.nav_host_fragment) {
-                navController.navigate(R.id.nav_host_fragment); // Navegar al fragmento de inicio
-            }
 
-            if (menuItem.getItemId() == R.id.menu_about) {
-                openAboutDialog();
-            }
+            // Si queremos volver al menú de inicio
+            if (menuItem.getItemId() == R.id.nav_host_fragment) { navController.navigate(R.id.nav_host_fragment); }
 
-            if (menuItem.getItemId() == R.id.menu_language) {
-                changeLanguage();
-            }
+            // Si queremos abrir el modal de información sobre la aplicación
+            if (menuItem.getItemId() == R.id.menu_about) { openAboutDialog(); }
 
+            // Si queremos ejecutar el cambio de idioma
+            if (menuItem.getItemId() == R.id.menu_language) { changeLanguage(); }
+
+            // Ejecutamos el cierre del menú y salimos del método
             binding.drawerLayout.closeDrawers(); // Cerrar el menú
             return true;
+
         });
 
     }
 
+    /**
+     * Método que se ejecuta si hacemos clic en el cambio de idioma desde el menú drawer
+     * Funciona a modo de switch, establece el idioma contrario al que está ejecutándose
+     * Alternando entre idioma español e inglés
+     */
     private void changeLanguage() {
 
+        // Para el cambio de idioma, leeremos la clave "idioma" posiblemente almacenada en el dispositivo
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String idiomaSeleccionado = sharedPreferences.getString("idioma", "");
-        if (idiomaSeleccionado.isEmpty()) { idiomaSeleccionado = "en"; }
+
+        // Si no existe un idioma almacenado, entonces, el cambio de idioma será al inglés
+        if (idiomaSeleccionado.isEmpty()) { idiomaSeleccionado = "es"; }
 
         switch (idiomaSeleccionado) {
 
@@ -154,20 +167,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Método para establecer el idioma seleccionado en las preferencias del dispositivo
+     * @param lang Idioma para almacenar en el dispositivo y establecer como definido
+     */
     private void setLanguage(String lang) {
 
         // Establecemos como preferencia en el dispositivo la selección del usuario
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("idioma", lang);
         editor.apply();
 
+        // Leemos la información almacenada en el dispositivo y la configuramos como seleccionada
         Resources res = getResources();
         Configuration conf = res.getConfiguration();
         DisplayMetrics dm = res.getDisplayMetrics();
         conf.locale = Locale.forLanguageTag(lang);
         res.updateConfiguration(conf, dm);
+
+        // Finalmente, recreamos la vista que será cargada con el nuevo idioma
         recreate();
 
     }
@@ -179,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void characterClicked(CharacterData character, View view) {
 
-        // Crear un Bundle para pasar los datos al fragmento CharacterDetailFragment
+        // Creamos un Bundle para pasar los datos al fragmento CharacterDetailFragment
         Bundle bundle = new Bundle();
         bundle.putString("name", character.getName());
         bundle.putString("role", character.getRole());
@@ -189,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Navegar al CharacterDetailFragment con el Bundle
         navController.navigate(R.id.gameDetailFragment, bundle);
-        //Navigation.findNavController(view).navigate(R.id.gameDetailFragment, bundle);
+
     }
 
     /**
@@ -199,29 +218,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // Manejar clics en el icono del menú
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        }
+        // Maneja los clics en el elemento del menú
+        if (toggle.onOptionsItemSelected(item)) { return true; }
         return super.onOptionsItemSelected(item);
-
-        /*
-        System.out.println(item.getItemId());
-
-        if (item.getItemId() == R.id.menu_about) {
-            openAboutDialog();
-        } else if (item.getItemId() == 16908332) {
-            return navController.navigateUp() || super.onSupportNavigateUp();
-        }
-
-        return true;
-        */
 
     }
 
     /**
-     * Método para abrir el menú de Acerca de.
-     * Abre un diálogo con la información de la aplicación.
+     * Método para abrir el menú de Acerca de
+     * Abre un diálogo con la información de la aplicación
      */
     public void openAboutDialog() {
 
@@ -242,17 +247,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Método para controlar el funcionamiento del botón volver del dispositivo
      * @return
      */
     @Override
     public boolean onSupportNavigateUp() {
+
         Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
 
         if (navHostFragment != null) {
             NavController navController = NavHostFragment.findNavController(navHostFragment);
             return NavigationUI.navigateUp(navController, binding.drawerLayout) || super.onSupportNavigateUp();
         }
+
         return super.onSupportNavigateUp();
     }
 
