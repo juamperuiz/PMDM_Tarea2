@@ -17,10 +17,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.ruizrabadanjuanpedro.pmdm_tarea2.databinding.ActivityMainBinding;
-
 import java.util.Locale;
 
 /**
@@ -44,22 +42,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
+        // Voy a comprobar el idioma preferido del usuario
         String idiomaAlmacenado = PreferencesHelper.getLanguage(this);
 
-        // Establecemos un idioma por defecto si no existe almacenado uno previo
+        // Si el usuario no ha seleccionado previamente su preferencia de idioma, cargaremos el español por defecto
         if (idiomaAlmacenado == null) {
             PreferencesHelper.saveLanguage(this, "es");
             idiomaAlmacenado = "es";
         }
 
-        System.out.println("Idioma almacenado: " + PreferencesHelper.getLanguage(this));
-
         Locale locale = new Locale(idiomaAlmacenado);
         Configuration config = new Configuration(getResources().getConfiguration());
         config.setLocale(locale);
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-
-        System.out.println("Locale actual: " + locale.toString());
 
         // Inicializamos la Splash Screen de bienvenida de la aplicación
         SplashScreen.installSplashScreen(this);
@@ -82,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Configuramos el icono del menú en la ActionBar
         if (getSupportActionBar() != null) { getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
-
-
 
         // Mensaje de bienvenida tras la SplashScreen mediante el componente Snackbar
         Snackbar.make(findViewById(R.id.drawer_layout), getString(R.string.WelcomeToast), Snackbar.LENGTH_SHORT).show();
